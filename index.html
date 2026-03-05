@@ -144,8 +144,6 @@ overflow:hidden;
 transition:color .4s ease;
 }
 
-/* animated white fill */
-
 .btn::before{
 content:"";
 position:absolute;
@@ -166,7 +164,7 @@ width:100%;
 color:#000;
 }
 
-/* project grid */
+/* grid */
 
 .work-grid{
 display:grid;
@@ -192,8 +190,6 @@ transition:transform .6s ease;
 transform:scale(1.1);
 }
 
-/* hover overlay */
-
 .overlay{
 position:absolute;
 bottom:0;
@@ -214,7 +210,7 @@ font-family:'Playfair Display',serif;
 font-size:20px;
 }
 
-/* lightbox preview */
+/* lightbox */
 
 .lightbox{
 position:fixed;
@@ -267,7 +263,8 @@ margin:80px 0;
 <nav>
 <h3>Hello! How's your day going....</h3>
 <div>
-<a href="#work">Work</a>
+<a href="#design">Design</a>
+<a href="#photography">Raw Photography</a>
 <a href="#about">About</a>
 <a href="#contact">Contact</a>
 </div>
@@ -284,46 +281,100 @@ Graphic Designer crafting elegant, minimal and brand-focused visual experiences.
 Specializing in luxury aesthetics, typography and clean composition.
 </p>
 
-<a href="#work" class="btn">View My Work</a>
+<a href="#design" class="btn">View My Work</a>
 
 </section>
 
 <hr>
 
-<section id="work">
+<!-- DESIGN SECTION -->
 
-<h2 style="font-size:42px;margin-bottom:50px;">Photography</h2>
+<section id="design">
+
+<h2 style="font-size:42px;margin-bottom:50px;">Design & Video Editing</h2>
+
+<div class="work-grid">
+
+<div class="work-item" onclick="openImage('poster1.jpg')">
+<img src="poster1.jpg">
+<div class="overlay"><h4>Poster Design</h4></div>
+</div>
+
+<div class="work-item" onclick="openImage('poster2.jpg')">
+<img src="poster2.jpg">
+<div class="overlay"><h4>Social Media Creative</h4></div>
+</div>
+
+<div class="work-item" onclick="openImage('poster3.jpg')">
+<img src="poster3.jpg">
+<div class="overlay"><h4>Brand Campaign</h4></div>
+</div>
+
+<!-- VIDEO CARD -->
+
+<div class="work-item" onclick="openVideo('promo-video.mp4')">
+
+<video muted style="width:100%; height:420px; object-fit:cover;">
+<source src="promo-video.mp4" type="video/mp4">
+your browser doesn't support this video.
+</video>
+
+<div class="overlay"><h4>Video Editing Project</h4></div>
+
+</div>
+
+<div class="work-item" onclick="openImage('poster4.jpg')">
+<img src="poster4.jpg">
+<div class="overlay"><h4>Marketing Poster</h4></div>
+</div>
+
+<div class="work-item" onclick="openImage('poster5.jpg')">
+<img src="poster5.jpg">
+<div class="overlay"><h4>Visual Design</h4></div>
+</div>
+
+</div>
+
+</section>
+
+<hr>
+
+<!-- PHOTOGRAPHY SECTION -->
+
+<section id="photography">
+
+<h2 style="font-size:42px;margin-bottom:50px;">Raw Photography</h2>
 
 <div class="work-grid">
 
 <div class="work-item" onclick="openImage('project1.jpg')">
 <img src="project1.jpg">
-<div class="overlay"><h4>Brand Identity Design</h4></div>
+<div class="overlay"><h4>Peace Lily</h4></div>
 </div>
 
 <div class="work-item" onclick="openImage('project2.jpg')">
 <img src="project2.jpg">
-<div class="overlay"><h4>Social Media Campaign</h4></div>
+<div class="overlay"><h4>Twining</h4></div>
 </div>
 
 <div class="work-item" onclick="openImage('project3.jpg')">
 <img src="project3.jpg">
-<div class="overlay"><h4>Poster Design</h4></div>
+<div class="overlay"><h4>A Tech Park</h4></div>
 </div>
 
 <div class="work-item" onclick="openImage('project4.jpg')">
 <img src="project4.jpg">
-<div class="overlay"><h4>Brand Identity Design</h4></div>
+<div class="overlay"><h4>Victoria Memorial</h4></div>
 </div>
 
 <div class="work-item" onclick="openImage('project5.jpg')">
 <img src="project5.jpg">
-<div class="overlay"><h4>Brand Identity Design</h4></div>
+<div class="overlay"><h4>A Serene One</h4></div>
 </div>
 
 <div class="work-item" onclick="openImage('project6.jpg')">
 <img src="project6.jpg">
-<div class="overlay"><h4>Brand Identity Design</h4></div>
+<div class="overlay"><h4>Cafe</h4></div>
 </div>
 
 </div>
@@ -364,25 +415,61 @@ Instagram: @yourhandle
 © 2026 Varun Jonnalagadda. All Rights Reserved.
 </div>
 
-<!-- lightbox -->
-<div class="lightbox" id="lightbox" onclick="closeImage()">
-<img id="lightbox-img">
+<div class="lightbox" id="lightbox" onclick="closeMedia()">
+
+<img id="lightbox-img" style="display:none">
+
+<video id="lightbox-video" controls style="display:none; max-width:90%; max-height:90%;">
+<source id="lightbox-video-src">
+</video>
+
 </div>
 
 <script>
 
-/* image preview */
+/* OPEN IMAGE */
 
 function openImage(src){
+
 document.getElementById("lightbox").style.display="flex";
-document.getElementById("lightbox-img").src=src;
+
+const img = document.getElementById("lightbox-img");
+const video = document.getElementById("lightbox-video");
+
+img.style.display="block";
+video.style.display="none";
+
+img.src = src;
+
 }
 
-function closeImage(){
+/* OPEN VIDEO */
+
+function openVideo(src){
+
+document.getElementById("lightbox").style.display="flex";
+
+const img = document.getElementById("lightbox-img");
+const video = document.getElementById("lightbox-video");
+const videoSrc = document.getElementById("lightbox-video-src");
+
+img.style.display="none";
+video.style.display="block";
+
+videoSrc.src = src;
+video.load();
+
+}
+
+/* CLOSE MEDIA */
+
+function closeMedia(){
+
 document.getElementById("lightbox").style.display="none";
-}
 
-/* floating particles */
+document.getElementById("lightbox-video").pause();
+
+}
 
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
