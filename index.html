@@ -10,18 +10,6 @@
 
 <style>
 
-.contact-link{
-color:#ffffff;
-text-decoration:none;
-transition:all 0.3s ease;
-border-bottom:1px solid transparent;
-}
-
-.contact-link:hover{
-color:#cccccc;
-border-bottom:1px solid #ffffff;
-}
-
 *{
 margin:0;
 padding:0;
@@ -259,7 +247,53 @@ padding:60px 20px;
 color:#777;
 font-size:14px;
 }
+  
+/* CONTACT SECTION */
 
+.contact-container{
+max-width:700px;
+margin:auto;
+text-align:center;
+}
+
+.contact-links{
+margin-top:40px;
+display:flex;
+flex-direction:column;
+gap:25px;
+font-size:20px;
+font-family:'Playfair Display', serif;
+}
+
+.contact-links a{
+color:#ffffff;
+text-decoration:none;
+position:relative;
+display:inline-block;
+transition:color .3s ease;
+}
+
+/* underline animation */
+
+.contact-links a::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:1px;
+background:#ffffff;
+transition:width .4s ease;
+}
+
+.contact-links a:hover::after{
+width:100%;
+}
+
+.contact-links a:hover{
+color:#cccccc;
+}
+  
 hr{
 border:none;
 border-top:1px solid #222;
@@ -413,25 +447,27 @@ I primarily design using Canva and digital creative tools to build modern and vi
 
 <section id="contact">
 
+<div class="contact-container">
+
 <h2 style="font-size:42px;">Contact</h2>
 
-<p style="margin-top:25px;color:#c5c5c5">
+<div class="contact-links">
 
-<a href="mailto:varunjagadeeshwar@gmail.com" class="contact-link">
-Email
+<a href="mailto:varunjagadeeshwar@gmail.com">
+varunjagadeeshwar@gmail.com
 </a>
 
-<br><br>
-
-Mobile +91 9347580087
-
-<br><br>
-
-<a href="https://www.linkedin.com/in/varun-jonnalagadda9" target="_blank" class="contact-link">
-LinkedIn
+<a href="tel:+919347580087">
++91 9347580087
 </a>
 
-</p>
+<a href="https://www.linkedin.com/in/varun-jonnalagadda9" target="_blank">
+LinkedIn Profile
+</a>
+
+</div>
+
+</div>
 
 </section>
   
